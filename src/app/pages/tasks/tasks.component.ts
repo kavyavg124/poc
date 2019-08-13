@@ -12,7 +12,6 @@ import { isNgTemplate } from '@angular/compiler';
 export class TasksComponent implements OnInit {
   displayedColumns: string[] = ['user', 'description', 'state', 'action'];
   taskList = [];
-  taskListArr = [];
   users: any;
   selectedItem: string;
   filterTask: FormGroup;
@@ -75,9 +74,13 @@ export class TasksComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
+        this.isLoading = true;
+        this.taskList = [];
+
         this.tasksService.deleteTask(taskID).subscribe(result => {
           this.tasksService.tasksList().subscribe(taskData => {
-            this.taskList = [taskData];
+            this.isLoading = false;
+            this.parseTaskList(taskData);
           });
         });
       }
@@ -98,3 +101,4 @@ export class TasksComponent implements OnInit {
     });
   }
 }
+
