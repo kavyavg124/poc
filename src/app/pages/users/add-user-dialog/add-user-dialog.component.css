@@ -1,0 +1,6 @@
+.dialog-container{
+    width: 25rem;
+}
+::ng-deep .mat-form-field{
+    display: block !important;
+}

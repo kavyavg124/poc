@@ -1,0 +1,12 @@
+
+.content-wrpr {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+
+}
+.navigation{
+    padding-right: 0px;
+    padding-left: 0px;
+}

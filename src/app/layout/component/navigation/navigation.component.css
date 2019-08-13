@@ -1,0 +1,37 @@
+.navigation-wrapper{
+    height: 100%;  
+}
+.sidebar {
+    background: #023437;
+    box-sizing: border-box;
+    z-index: 9;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+}
+.logo-wrpr {
+    margin-top: 20px;
+}
+.sidebar ul{
+    list-style: none;
+}
+.sidebar ul li span:not(:hover), .sidebar ul li a:not(:hover),.logo-wrpr h5{
+    color: #fff;
+}
+.inline-header{
+    display: flex;
+    flex-wrap: nowrap;
+    display: -webkit-box;
+}
+.header-right{
+    width: 100%;
+}
+.menu-bars{
+    cursor: pointer;
+}
+.active-link, .active-link span, .header-items li a:hover{
+    color: #1cabb9 !important;
+    text-decoration: none;
+}

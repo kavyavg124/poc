@@ -1,0 +1,36 @@
+<mat-sidenav-container class="navigation-wrapper example-container">
+    <mat-sidenav #sidenav opened mode="side" class="sidebar col-lg-2 col-md-2">
+        <div class="logo-wrpr text-center">
+            <h5>Admin Portal</h5>
+        </div>
+        <ul class="header-items mt-5">
+            <li class="mt-3">
+                <a class="dashboard-link active" routerLinkActive="active-link" routerLink="users">
+                    <fa name="users" class="col-lg-1"></fa>
+                    <span class="col-lg-11">Users</span>
+                </a>
+            </li>
+            <li class="mt-3">
+                <a class="admin-link" routerLinkActive="active-link" routerLink="tasks">
+                    <fa name="tasks" class="col-lg-1"></fa>
+                    <span class="col-lg-11">Tasks</span>
+                </a>
+            </li>
+            <li class="mt-3">
+                <a class="admin-link" (click)="logout()">
+                    <fa name="sign-out" class="col-lg-1"></fa>
+                    <span class="col-lg-11">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content class="col-lg-10 col-md-10">
+        <div class="inline-header">
+            <p>
+                <fa name="bars" class="menu-bars" (click)="sidenav.toggle()"></fa>
+            </p>
+            <app-header class="header-right"></app-header>
+        </div>
+        <app-content></app-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

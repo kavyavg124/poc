@@ -1,0 +1,32 @@
+<div class="col-lg-12 box-container">
+    <div class="inline-block">
+        <h4 class="pt-3">USERS LIST</h4>
+        <a class="btn btn-primary add-btn admin-link mt-2" (click)="openAddUserDialog()">ADD USER</a>
+    </div>
+    <hr>
+    <div class="listing-user pt-3">
+        <table mat-table [dataSource]="userList" class="mat-elevation-z8 mx-auto">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let user"> {{user.first_name}} {{user.last_name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let user">
+                    <a class="admin-link" routerLinkActive="active-link" (click)="editUser(user.id)">
+                        <fa name="pencil" class="col-lg-1"></fa>
+                    </a>
+                    <a class="admin-link" routerLinkActive="active-link" (click)="deleteUser(user.id)">
+                        <fa name="trash" class="col-lg-1"></fa>
+                    </a>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

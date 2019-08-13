@@ -1,0 +1,5 @@
+<div *ngIf="messages.length"
+        [ngClass]="{ 'alert-success alert': messageType === 'success', 'alert alert-danger': messageType === 'error' }">
+        <a class="close" data-dismiss="alert" aria-label="close" (click)="clear()">&times;</a>
+        <span *ngFor='let msg of messages'> {{msg}} </span>
+</div>

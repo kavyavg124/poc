@@ -1,0 +1,51 @@
+<div class="col-lg-12 box-container">
+    <div class="inline-block">
+        <h4 class="pt-3">TASK LIST</h4>
+        <a class="btn btn-primary add-btn mt-2" (click)="openAddTaskDialog()">ADD TASK</a>
+    </div>
+    <hr>
+    <div class="col-lg-12">
+        <form [formGroup]="filterTask" (ngSubmit)="onSubmit()">
+            <mat-form-field class="pr-5">
+                <mat-label>Filter by User</mat-label>
+                <mat-select formControlName="user_id">
+                    <mat-option *ngFor="let user of users" [value]="user.id">
+                        {{user.first_name}} {{user.last_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="form-group">
+                <button class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+        <app-common-loader *ngIf="isLoading" ></app-common-loader>
+
+        <table mat-table [dataSource]="taskList" *ngIf="taskList.length > 0" class="mat-elevation-z8 mx-auto listing-task">
+            <ng-container matColumnDef="user">
+                <th mat-header-cell *matHeaderCellDef> User </th>
+                <td mat-cell *matCellDef="let task"> {{task.userName}}</td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let task"> {{task.description}} </td>
+            </ng-container>
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef> State </th>
+                <td mat-cell *matCellDef="let task"> {{task.state}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let task">
+                    <a class="admin-link" routerLinkActive="active-link" (click)="editTask(task.id)">
+                        <fa name="pencil" class="col-lg-1"></fa>
+                    </a>
+                    <a class="admin-link" routerLinkActive="active-link" (click)="deleteTask(task.id)">
+                        <fa name="trash" class="col-lg-1"></fa>
+                    </a>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
